@@ -1,0 +1,18 @@
+rules:
+  - id: larangan-eval-exec
+    languages: [python]
+    severity: ERROR
+    message: Jangan memakai eval() atau exec(); input dapat dieksekusi sebagai kode (code injection).
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+
+  - id: kata-sandi-ditulis-di-kode
+    languages: [python]
+    severity: ERROR
+    message: Kata sandi, token, atau API key tidak boleh ditulis langsung di kode. Gunakan variabel lingkungan.
+    patterns:
+      - pattern: $VAR = "..."
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: (?i).*(password|passwd|secret|api_key|token).*

@@ -1,0 +1,9 @@
+# Lingkungan virtual dan cache Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Data pribadi dan hasil pemindaian lokal
+data_pengeluaran.json
+semgrep-results.json
